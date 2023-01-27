@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OpenTodo{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; display: flex; }
+    .menu li { list-style-type: none; }
+    .menu { display: flex; padding-left: 30%; }
+    .menu a { margin-right: 20px; text-decoration: none; color: #000; }
+    .logo-img { height: 50px; width: 220px; padding-top: 3px; }
+    .main-div { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+
+</style>
+
+<div class="example-wrapper">
+    <img src="{{ asset('build/images/logo.png' ) }}" alt="" class="logo-img">
+    <ul class="menu">
+        <li><a href="{{ path('add_task') }}">Ajouter une tâche</a></li>
+        <li><a href="#">Déconnexion</a></li>
+    </ul>
+</div>
+
+<div class="main-div">
+
+    <h2>Création d'une tâche</h2>
+    {{ form_start(form) }}
+<form method="post">
+    <div class="form-group">
+        {{ form_label(form.nom) }}
+        {{ form_widget(form.nom) }}
+        {{ form_errors(form.nom) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.date_fin) }}
+        {{ form_widget(form.date_fin) }}
+        {{ form_errors(form.date_fin) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description) }}
+        {{ form_errors(form.description) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.statut) }}
+        {{ form_widget(form.statut) }}
+        {{ form_errors(form.statut) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.photo) }}
+        {{ form_widget(form.photo) }}
+        {{ form_errors(form.photo) }}
+    </div>
+    <button type="submit">Enregistrer</button>
+    {{ form_end(form) }}
+</form>
+
+
+
+</div>
+{% endblock %}

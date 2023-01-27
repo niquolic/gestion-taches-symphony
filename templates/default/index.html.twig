@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OpenTodo{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; display: flex; }
+    .menu li { list-style-type: none; }
+    .menu { display: flex; padding-left: 30%; }
+    .menu a { margin-right: 20px; text-decoration: none; color: #000; }
+    .logo-img { height: 50px; width: 220px; padding-top: 3px; }
+    .main-div { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .thead th { padding-right: 130px; }
+</style>
+
+<div class="example-wrapper">
+    <img src="{{ asset('build/images/logo.png' ) }}" alt="" class="logo-img">
+    <ul class="menu">
+        <li><a href="{{ path('add_task') }}">Ajouter une tâche</a></li>
+        <li><a href="#">Déconnexion</a></li>
+    </ul>
+</div>
+
+<div class="main-div">
+    <h2>Mes tâches</h2>
+
+    <table class="table-task">
+        <thead class="thead">
+            <tr>
+                <th>Nom</th>
+                <th>Statut</th>
+                <th>Date de fin</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+            {% for task in tasks %}
+    <tr>
+        <td>{{ task.nom }}</td>
+        <td>{{ task.statut }}</td>
+        <td>{{ task.dateFin|date('d-m-Y') }}</td>
+        <td>
+            {# <a href="{{ path('edit_task', {'id': task.id}) }}">Editer</a> #}
+            <a href="{{ path('delete_task', {'id': task.id}) }}">Supprimer</a>
+        </td>
+    </tr>
+{% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
