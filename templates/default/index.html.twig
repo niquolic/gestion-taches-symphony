@@ -40,7 +40,7 @@
         <td>{{ task.statut }}</td>
         <td>{{ task.dateFin|date('d-m-Y') }}</td>
         <td>
-            {# <a href="{{ path('edit_task', {'id': task.id}) }}">Editer</a> #}
+            <a href="{{ path('edit_task', {'id': task.id}) }}">Modifier</a>
             <a href="{{ path('delete_task', {'id': task.id}) }}">Supprimer</a>
         </td>
     </tr>

@@ -55,6 +55,29 @@ class DefaultController extends AbstractController
         ]);
     }
     /**
+     * @Route("/edit/{id}", name="edit_task")
+     */
+    public function edit_task(Tache $task, Request $request)
+    {
+        $form = $this->createForm(AddTaskType::class, $task);
+
+        // Traitement de la soumission du formulaire
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Mise à jour de la tâche dans la base de données
+            $this->em->flush();
+
+            return $this->redirectToRoute('app_default');
+        }
+
+        // Affichage de la vue pour la modification de la tâche
+        return $this->render('actions/edit.html.twig', [
+            'form' => $form->createView(),
+            'task' => $task
+        ]);
+    }
+
+    /**
      * @Route("/delete_task/{id}", name="delete_task")
      */
     public function delete_task($id)
