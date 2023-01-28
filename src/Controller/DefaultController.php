@@ -47,6 +47,16 @@ class DefaultController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $photo = $form->get('photo')->getData();
+            if ($photo) {
+                $fichier = md5(uniqid()) . '.' . $photo->guessExtension();
+                // Enregistrement du fichier dans le dossier public
+                $photo -> move(
+                    $this->getParameter('img_task_directory'),
+                    $fichier
+                );
+                $task -> setPhoto($fichier);
+            }
             $this->em->persist($task);
             $this->em->flush();
             return $this->redirectToRoute('app_default');
@@ -67,6 +77,18 @@ class DefaultController extends AbstractController
         // Traitement de la soumission du formulaire
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $photo = $form->get('photo')->getData();
+            if ($photo) {
+                $fichier = md5(uniqid()) . '.' . $photo->guessExtension();
+                // Enregistrement du fichier dans le dossier public
+                $photo -> move(
+                    $this->getParameter('img_task_directory'),
+                    $fichier
+                );
+                $task -> setPhoto($fichier);
+            }else{
+                $task -> setPhoto(NULL);
+            }
             // Mise à jour de la tâche dans la base de données
             $this->em->flush();
 

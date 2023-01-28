@@ -20,7 +20,8 @@ class AddTaskType extends AbstractType
             ->add('photo', FileType::class, [
                 'label' => false,
                 'mapped'=>false,
-                'attr' => array('accept' => 'image/jpeg,image/png,image/jpg')
+                'attr' => array('accept' => 'photo/jpeg,photo/png,photo/jpg'),
+                'required' => false,
             ])
             ->add('statut',ChoiceType::class, [
                 'placeholder' => 'Sélectionnez le statut',

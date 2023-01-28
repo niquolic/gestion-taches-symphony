@@ -38,15 +38,15 @@
                 <tr>
                     <td>{% if task.photo %}
                                     <div class="col-auto">
-                                        <img src="{{ asset('/uploads/tasks/' ~ task.photo) }}"
+                                        <img src="{{ asset('/upload/img/' ~ task.photo) }}"
                                         style="width: 55px; height: 55px;">
                                     </div>
                                 {% endif %}{{ task.nom }}<br>{{ task.description }}</td>
                     <td>{{ task.statut }}</td>
                     <td>{{ task.dateFin|date('d-m-Y') }}</td>
                     <td>
-                        <a href="{{ path('edit_task', {'id': task.id}) }}">Modifier</a>
-                        <a href="{{ path('delete_task', {'id': task.id}) }}">Supprimer</a>
+                        <a href="{{ path('edit_task', {'id': task.id}) }}"><img src="{{ asset('build/images/edit.png' ) }}" alt="" class="edit-img"></a>
+                        <a href="{{ path('delete_task', {'id': task.id}) }}"><img src="{{ asset('build/images/delete.png' ) }}" alt="" class="delete-img"></a>
                     </td>
                 </tr>
             {% endfor %}
