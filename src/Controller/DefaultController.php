@@ -20,6 +20,7 @@ class DefaultController extends AbstractController
     {
         $this->em = $em;
     }
+
     /**
      * @Route("/", name="app_default")
      */
@@ -34,6 +35,7 @@ class DefaultController extends AbstractController
             'controller_name' => 'DefaultController', 'tasks' => $tasks,
         ]);
     }
+
     /**
      * @Route("/add_task", name="add_task")
      */
@@ -54,6 +56,7 @@ class DefaultController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/edit/{id}", name="edit_task")
      */
@@ -94,5 +97,13 @@ class DefaultController extends AbstractController
         $this->em->flush();
 
         return $this->redirectToRoute('app_default');
+    }
+
+    /**
+     * @Route("/login", name="login")
+     */
+    public function login()
+    {
+        return $this->render('security/login.html.twig');
     }
 }

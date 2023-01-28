@@ -6,6 +6,8 @@ use App\Entity\Tache;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AddTaskType extends AbstractType
 {
@@ -15,8 +17,19 @@ class AddTaskType extends AbstractType
             ->add('nom')
             ->add('date_fin')
             ->add('description')
-            ->add('photo')
-            ->add('statut')
+            ->add('photo', FileType::class, [
+                'label' => false,
+                'mapped'=>false,
+                'attr' => array('accept' => 'image/jpeg,image/png,image/jpg')
+            ])
+            ->add('statut',ChoiceType::class, [
+                'placeholder' => 'Sélectionnez le statut',
+                'choices'=>[
+                    'À faire'=>'À faire',
+                    'En cours'=>'En cours',
+                    'Effectué'=>'Effectué'
+                ]
+            ])
         ;
     }
 
