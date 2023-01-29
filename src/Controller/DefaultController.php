@@ -10,7 +10,14 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Tache;
 use App\Entity\User;
 use App\Form\AddTaskType;
+use App\Form\RegistrationFormType;
 use App\Repository\TacheRepository;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Controller\RegistrationController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use App\Security\AppCustomAuthenticator;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class DefaultController extends AbstractController
 {
@@ -127,5 +134,39 @@ class DefaultController extends AbstractController
     public function login()
     {
         return $this->render('security/login.html.twig');
+    }
+
+    /**
+     * @Route("/register", name="register")
+     */
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager, RegistrationController $registrationController)
+    {
+        $user = new User();
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // encode the plain password
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+            // do anything else you need here, like send an email
+
+            return $userAuthenticator->authenticateUser(
+                $user,
+                $authenticator,
+                $request
+            );
+        }
+
+        return $this->render('registration/register.html.twig', [
+            'registrationForm' => $form->createView(),
+        ]);
     }
 }

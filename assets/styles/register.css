@@ -1,0 +1,33 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form > * {
+    margin: 15px 0;
+    font-size: 15px;
+}
+
+form input {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.reg-title {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    background-color: #3374FF;
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+    box-shadow: none;
+    font-size: 15px;
+}
