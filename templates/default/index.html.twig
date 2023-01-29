@@ -14,6 +14,8 @@
     .head-div { display: flex; max-width: 800px; width: 95%; }
     .head-div a { text-decoration: none; padding-left: 56%; padding-top: 3%; color: red; }
     .head-div svg { padding-right: 5px; }
+    .col-auto img { height: 50px; width: 50px; border-radius: 50px; margin-right: 10px; }
+    .td-1 { display: flex; }
 </style>
 
 <div class="example-wrapper">
@@ -42,10 +44,9 @@
         <tbody class="tbody">
             {% for task in tasks %}
                 <tr>
-                    <td>{% if task.photo %}
+                    <td class="td-1">{% if task.photo %}
                                     <div class="col-auto">
-                                        <img src="{{ asset('/upload/img/' ~ task.photo) }}"
-                                        style="width: 55px; height: 55px;">
+                                        <img src="{{ asset('/upload/img/' ~ task.photo) }}">
                                     </div>
                                 {% endif %}{{ task.nom }}<br>{{ task.description }}</td>
                     <td>{{ task.statut }}</td>

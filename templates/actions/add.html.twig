@@ -10,7 +10,14 @@
     .menu a { margin-right: 20px; text-decoration: none; color: #000; }
     .logo-img { height: 46px; width: 220px; padding-top: 3px; }
     .main-div { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-
+    .env { background-color: #3374FF;
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+    box-shadow: none;
+    font-size: 15px; }
+    .form-group { display: flex; }
+    input { margin-left: 10px; }
 </style>
 
 <div class="example-wrapper">
@@ -51,7 +58,7 @@
         {{ form_widget(form.photo) }}
         {{ form_errors(form.photo) }}
     </div>
-    <button type="submit">Enregistrer</button>
+    <button class="env" type="submit">Enregistrer</button>
     {{ form_end(form) }}
 </form>
 

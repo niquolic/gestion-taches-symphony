@@ -1,0 +1,6 @@
+.example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; display: flex; }
+.menu li { list-style-type: none; }
+.menu { display: flex; padding-left: 30%; }
+.menu a { margin-right: 20px; text-decoration: none; color: #000; }
+.logo-img { height: 46px; width: 220px; padding-top: 3px; }
+.main-div { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
