@@ -3,28 +3,12 @@
 {% block title %}OpenTodo{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; display: flex; }
-    .menu li { list-style-type: none; }
-    .menu { display: flex; padding-left: 30%; }
-    .menu a { margin-right: 20px; text-decoration: none; color: #000; }
-    .logo-img { height: 46px; width: 220px; padding-top: 3px; }
-    .main-div { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .env { background-color: #3374FF;
-    border-radius: 10px;
-    height: 30px;
-    width: 100px;
-    box-shadow: none;
-    font-size: 15px; }
-    .form-group { display: flex; }
-    input { margin-left: 10px; }
-</style>
 
 <div class="example-wrapper">
     <a href="{{ path('app_default') }}"><img src="{{ asset('build/images/logo.png' ) }}" alt="" class="logo-img"></a>
     <ul class="menu">
         <li><a href="{{ path('add_task') }}">Ajouter une tâche</a></li>
-        <li><a href="{{ path('login') }}">Déconnexion</a></li>
+        <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
     </ul>
 </div>
 

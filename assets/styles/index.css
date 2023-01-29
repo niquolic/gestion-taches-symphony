@@ -1,10 +1,14 @@
 .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; display: flex; }
-.menu li { list-style-type: none; }
-.menu { display: flex; padding-left: 30%; }
-.menu a { margin-right: 20px; text-decoration: none; color: #000; }
-.logo-img { height: 46px; width: 220px; padding-top: 3px; }
-.main-div { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-.thead th { padding-right: 130px; }
-.head-div { display: flex; max-width: 800px; width: 95%; }
-.head-div a { text-decoration: none; padding-left: 56%; padding-top: 3%; color: red; }
-.head-div svg { padding-right: 5px; }
+    .menu li { list-style-type: none; }
+    .menu { display: flex; padding-left: 30%; }
+    .menu a { margin-right: 20px; text-decoration: none; color: #000; }
+    .logo-img { height: 46px; width: 220px; padding-top: 3px; }
+    .main-div { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .thead th { padding-right: 50px; }
+    .end-date-th { display: flex; width: 100px; }
+    .head-div { display: flex; max-width: 800px; width: 95%; }
+    .head-div a { text-decoration: none; padding-left: 56%; padding-top: 3%; color: red; }
+    .head-div svg { padding-right: 5px; }
+    .col-auto img { height: 50px; width: 50px; border-radius: 50px; margin-right: 10px; }
+    .td-1 { display: flex; }
+    .div-nom-desc p { font-size: 15px; margin-top: 0px; }

@@ -34,6 +34,9 @@ class DefaultController extends AbstractController
     public function index(TacheRepository $taskRepository): Response
     {
         $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('login');
+        }
 
         // Récupération des tâches correspondant à l'utilisateur connecté
         $tasks = $taskRepository->findBy(['id_user' => $user->getId()]);
