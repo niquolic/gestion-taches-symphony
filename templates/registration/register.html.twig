@@ -4,6 +4,7 @@
 
 {% block body %}
     <h1 class="reg-title">S'enregistrer</h1>
+    {# Affichege du formulaire de création de compte #}
     <div clacc="form-register">
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email, {label: 'Email : '}) }}

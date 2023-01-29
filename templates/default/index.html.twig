@@ -4,6 +4,8 @@
 
 {% block body %}
 
+{# Menu #}
+
 <div class="example-wrapper">
     <a href="{{ path('app_default') }}"><img src="{{ asset('build/images/logo.png' ) }}" alt="" class="logo-img"></a>
     <ul class="menu">
@@ -18,6 +20,8 @@
         <a href="{{ path('add_task') }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>Ajouter une tâche</a>
     </div>
 
+    {# Affichage du tableau avec la liste des tâches de l'utilisateur #}
+
     <table class="table-task">
         <thead class="thead">
             <tr>
@@ -28,6 +32,7 @@
             </tr>
         </thead>
         <tbody class="tbody">
+        {# Récupération des tâches #}
             {% for task in tasks %}
                 <tr>
                     <td class="td-1">{% if task.photo %}

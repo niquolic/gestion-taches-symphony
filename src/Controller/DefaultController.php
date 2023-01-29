@@ -33,7 +33,9 @@ class DefaultController extends AbstractController
      */
     public function index(TacheRepository $taskRepository): Response
     {
+        // Récupération de l'utilisateur
         $user = $this->getUser();
+        // Si on ne récupère pas l'utilisateur, alors en redirige vers la page de login
         if (!$user) {
             return $this->redirectToRoute('login');
         }
@@ -52,10 +54,12 @@ class DefaultController extends AbstractController
     public function add_task(Request $request)
     {
         $task = new Tache();
+        // On met l'ID de l'utilisateur connecté au champ id_user
         $task -> setIdUser($this -> getUser() -> getId());
         $form = $this->createForm(AddTaskType::class, $task);
         $form->handleRequest($request);
 
+        // Quand le formulaire est envoyé
         if ($form->isSubmitted() && $form->isValid()) {
             $photo = $form->get('photo')->getData();
             if ($photo) {
@@ -69,9 +73,11 @@ class DefaultController extends AbstractController
             }
             $this->em->persist($task);
             $this->em->flush();
+            // Redirection vers la page d'accueil
             return $this->redirectToRoute('app_default');
         }
 
+        // Affiche la page d'ajout de tâche
         return $this->render('actions/add.html.twig', [
             'form' => $form->createView(),
         ]);
@@ -102,6 +108,7 @@ class DefaultController extends AbstractController
             // Mise à jour de la tâche dans la base de données
             $this->em->flush();
 
+            // Redirige vers la page d'accueil
             return $this->redirectToRoute('app_default');
         }
 
@@ -117,6 +124,7 @@ class DefaultController extends AbstractController
      */
     public function delete_task($id)
     {
+        // Recherche la tâche par rapport à son ID
         $task = $this->em->getRepository(Tache::class)->find($id);
 
         if (!$task) {
@@ -125,9 +133,11 @@ class DefaultController extends AbstractController
             );
         }
 
+        // Supprime la tâche
         $this->em->remove($task);
         $this->em->flush();
 
+        // Redirige vers la page d'accueil
         return $this->redirectToRoute('app_default');
     }
 
@@ -136,6 +146,7 @@ class DefaultController extends AbstractController
      */
     public function login()
     {
+        // Affiche le formulaire de login
         return $this->render('security/login.html.twig');
     }
 
@@ -168,6 +179,7 @@ class DefaultController extends AbstractController
             );
         }
 
+        // Affiche le formulaire de création de compte
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);

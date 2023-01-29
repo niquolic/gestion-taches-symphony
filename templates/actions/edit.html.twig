@@ -4,6 +4,8 @@
 
 {% block body %}
 
+{# Menu #}
+
 <div class="example-wrapper">
     <a href="{{ path('app_default') }}"><img src="{{ asset('build/images/logo.png' ) }}" alt="" class="logo-img"></a>
     <ul class="menu">
@@ -14,39 +16,39 @@
 
 <div class="main-div">
 
+    {# Affichage du formulaire de modification de tâche #}
+
     <h2>Création d'une tâche</h2>
     {{ form_start(form) }}
-<form method="post">
-    <div class="form-group">
-        {{ form_label(form.nom) }}
-        {{ form_widget(form.nom) }}
-        {{ form_errors(form.nom) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(form.date_fin) }}
-        {{ form_widget(form.date_fin) }}
-        {{ form_errors(form.date_fin) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(form.description) }}
-        {{ form_widget(form.description) }}
-        {{ form_errors(form.description) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(form.statut) }}
-        {{ form_widget(form.statut) }}
-        {{ form_errors(form.statut) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(form.photo) }}
-        {{ form_widget(form.photo) }}
-        {{ form_errors(form.photo) }}
-    </div>
-    <button class="env" type="submit">Enregistrer</button>
-    {{ form_end(form) }}
-</form>
-
-
+    <form method="post">
+        <div class="form-group">
+            {{ form_label(form.nom) }}
+            {{ form_widget(form.nom) }}
+            {{ form_errors(form.nom) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.date_fin) }}
+            {{ form_widget(form.date_fin) }}
+            {{ form_errors(form.date_fin) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description) }}
+            {{ form_errors(form.description) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.statut) }}
+            {{ form_widget(form.statut) }}
+            {{ form_errors(form.statut) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.photo) }}
+            {{ form_widget(form.photo) }}
+            {{ form_errors(form.photo) }}
+        </div>
+        <button class="env" type="submit">Enregistrer</button>
+        {{ form_end(form) }}
+    </form>
 
 </div>
 {% endblock %}
